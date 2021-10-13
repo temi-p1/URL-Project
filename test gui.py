@@ -6,7 +6,7 @@ import os
 import time
 
 #chrome driver
-exec_path = r"C:\Users\JoshAlder\OneDrive - Principle One\Documents\VS Code\URLs Project\chromedriver.exe"
+exec_path = r"PASTE CHROMEDRIVER EXE FILE PATH"
 driver = webdriver.Chrome(executable_path=exec_path)
 driver.set_page_load_timeout(30) #after 30 secs - time out    
 driver.maximize_window()
@@ -24,7 +24,7 @@ frame = tk.Frame(root, bg=framecol)
 frame.place(relwidth=0.8,relheight=0.4,relx=0.1,rely=0.1)
 
 # button to import URL text file:
-files = [] # appending array because i dont know how to set variables which can be called outside of the function
+files = [] # appending array (defining global variables would be better!)
 def getFile():
     # for widget in frame.winfo_children(): # delete label when user goes to select new file 
     #     widget.destroy()
@@ -34,7 +34,7 @@ def getFile():
     label = tk.Label(frame, text=urlTxtFile, bg=lblcol)
     if not urlTxtFile == '': # add label to root if a file is selected
             label.pack()
-    getFile.file = urlTxtFile # this doesn't do anything but the app seems to crash more if i delete it... maybe im just mental
+    getFile.file = urlTxtFile # this doesn't do anything but the app seems to crash more if i deleted... 
     files.append(urlTxtFile)
 
 openFile = tk.Button(root, text = 'Import URLs', padx=10,
@@ -59,13 +59,13 @@ chooseFolder = tk.Button(root, text = 'Choose Destination', padx=10,
 chooseFolder.pack()
 
 
-# Temi's screenshot function with folder as param
+# screenshot function
 def screenshot(d,folder):
     time_string = time.asctime().replace(":", " ")
     file_name = folder + time_string + ".png"
     d.save_screenshot(file_name)
 
-# Temi's processURLs function modified to open file + folder as param
+# processURLs function
 def processURLs(txtfile,folder):
     if not txtfile or txtfile == '':
         print('select file')
